@@ -1,15 +1,7 @@
 #!/usr/bin/env php
 <?php
-	
-$opts = getopt("b:");
-
-$birthDate = $opts["b"];
-$todayDate = date("Y-m-d");
-
-$birthTime = strtotime($birthDate);
-$todayTime = strtotime($todayDate);
-
-$totalSecs = $todayTime - $birthTime;
-$totalDays = floor($totalSecs / 3600 / 24);
-
+require_once 'vendor/autoload.php';
+$birthDate = '1978-09-22';
+$days = new \Volosatov\Dates\BirthDays($birthDate);
+$totalDays = $days->findTotalDays();
 echo "$birthDate : $totalDays\n";
